@@ -1,12 +1,12 @@
 import os
 
-domain = "https://rentit-seo-pages-1.vercel.app"
+domain = "https://rentit-seo-pages.onrender.com"
 
 folder = "output"
 
-xml = """<?xml version="1.0" encoding="UTF-8"?>
+xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-"""
+'''
 
 for file in os.listdir(folder):
 
@@ -14,13 +14,17 @@ for file in os.listdir(folder):
 
         xml += f"""
 <url>
-<loc>{domain}/output/{file}</loc>
+<loc>{domain}/{file}</loc>
 </url>
 """
 
-xml += """
-</urlset>
-"""
+xml += "\n</urlset>"
 
-with open("output/sitemap.xml", "w", encoding="utf-8") as f:
-    print("Sitemap generated successfully!")
+with open(
+    "output/sitemap.xml",
+    "w",
+    encoding="utf-8"
+) as f:
+    f.write(xml)
+
+print("Sitemap Generated")
